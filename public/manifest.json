@@ -1,0 +1,8 @@
+{
+  "short_name": "MegaSynergy",
+  "name": "MegaSynergy - BOB Excellence",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

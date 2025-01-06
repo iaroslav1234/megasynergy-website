@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Mono&display=swap');
+
+:root {
+  --primary: #FFFFFF;
+  --secondary: #CCCCCC;
+  --background: #000000;
+  --surface: #111111;
+  --text: #FFFFFF;
+  --text-secondary: #888888;
+  --glow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+@layer base {
+  body {
+    @apply m-0 bg-background text-text font-sans antialiased;
+    background: linear-gradient(to bottom, #000000, #111111);
+  }
+
+  ::selection {
+    @apply bg-white/20 text-white;
+  }
+}
+
+@layer components {
+  .mono {
+    font-family: 'Space Mono', monospace;
+  }
+
+  .gradient-text {
+    @apply text-white;
+    text-shadow: var(--glow);
+  }
+
+  .button-primary {
+    @apply bg-transparent border border-white text-white font-mono font-semibold 
+           py-3 px-6 rounded-none uppercase tracking-wider relative overflow-hidden 
+           transition-all duration-300 ease-out
+           hover:bg-white hover:text-black;
+  }
+
+  .button-primary::before {
+    content: '';
+    @apply absolute top-0 -left-full w-full h-full transition-all duration-500;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+  }
+
+  .button-primary:hover::before {
+    @apply left-full;
+  }
+
+  .stat-card {
+    @apply relative overflow-hidden border-white/10 backdrop-blur-sm p-6
+           transition-all duration-500 ease-out
+           hover:border-white/30;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .stat-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .stat-value {
+    @apply font-mono text-4xl font-bold text-white;
+    text-shadow: var(--glow);
+  }
+
+  .terminal-text {
+    @apply font-mono text-white relative inline-block;
+  }
+
+  .terminal-text::after {
+    content: '_';
+    @apply animate-pulse opacity-75;
+  }
+
+  .nav-link {
+    @apply text-[color:var(--text-secondary)] font-medium relative 
+           transition-all duration-300
+           hover:text-white;
+  }
+
+  .nav-link:hover {
+    text-shadow: var(--glow);
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-px bg-white transition-all duration-300 ease-out;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+}
