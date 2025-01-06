@@ -152,7 +152,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-3"
+            className="text-4xl lg:text-5xl font-bold text-white leading-[1.1] mb-3"
           >
             Building the World's<br />
             Largest BOB Reserve
