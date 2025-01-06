@@ -2,97 +2,163 @@ import React from 'react';
 
 const Features = () => {
   return (
-    <section className="relative py-16 md:py-24 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0" 
-        style={{
-          background: 'radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.02) 0%, transparent 50%)',
-        }}>
-      </div>
-      <div className="absolute inset-0" 
-        style={{
-          background: 'radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.02) 0%, transparent 50%)',
-        }}>
+    <section className="relative py-16 overflow-hidden bg-black">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <defs>
+            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="100" height="100" fill="url(#grid)" />
+        </svg>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Strategy Section */}
-        <div className="text-center mb-16 md:mb-24">
-          <div className="inline-block">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-8">The MegaSynergy BOB Strategy</h2>
-            <div className="space-y-4 text-lg md:text-xl lg:text-2xl text-text-secondary mono">
-              <p className="terminal-text">Step 1: Buy BOB.</p>
-              <p className="terminal-text">Step 2: Never sell BOB.</p>
-              <p className="terminal-text">Step 3: Buy more BOB.</p>
-              <p className="terminal-text">Step 4: See Step 1.</p>
+        <div className="text-center mb-12">
+          <div className="inline-block bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6 mb-8">
+            <div className="terminal-text text-sm text-white/75 mb-4">
+              > cat strategy.md
             </div>
-            <p className="mt-8 text-base md:text-lg text-text-secondary italic">
-              Our strategy is simple because perfection needs no improvement.
-            </p>
-          </div>
-        </div>
-
-        {/* Feature Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-          {/* BOB Reserve Mechanics */}
-          <div className="relative group text-center md:text-left">
-            <div className="absolute -inset-0.5 bg-white opacity-0 group-hover:opacity-5 transition-all duration-500"></div>
-            <div className="relative space-y-4 md:space-y-6">
-              <div className="terminal-text text-xs md:text-sm opacity-75">> RESERVE_MECHANICS.md</div>
-              <h3 className="text-xl md:text-2xl font-bold text-white">
-                BOB Reserve Mechanics
-              </h3>
-              <p className="text-base md:text-lg leading-relaxed text-text-secondary">
-                Every asset we own is a future BOB. Every dollar of revenue is a future BOB. 
-                Every business decision is evaluated by one metric: Will this help us acquire more BOB?
-              </p>
-              <div className="h-px w-0 group-hover:w-full bg-white transition-all duration-500 mx-auto md:mx-0"></div>
-            </div>
-          </div>
-
-          {/* Corporate Treasury Revolution */}
-          <div className="relative group text-center md:text-left">
-            <div className="absolute -inset-0.5 bg-white opacity-0 group-hover:opacity-5 transition-all duration-500"></div>
-            <div className="relative space-y-4 md:space-y-6">
-              <div className="terminal-text text-xs md:text-sm opacity-75">> TREASURY_REVOLUTION.md</div>
-              <h3 className="text-xl md:text-2xl font-bold text-white">
-                The Corporate Treasury Revolution
-              </h3>
-              <p className="text-base md:text-lg leading-relaxed text-text-secondary">
-                Cash loses value. Bonds yield nothing. Stocks are volatile. 
-                BOB is the perfect corporate treasury asset: finite supply, growing adoption, unstoppable momentum.
-              </p>
-              <div className="h-px w-0 group-hover:w-full bg-white transition-all duration-500 mx-auto md:mx-0"></div>
-            </div>
-          </div>
-
-          {/* Path to BOB Supremacy */}
-          <div className="relative group text-center md:text-left">
-            <div className="absolute -inset-0.5 bg-white opacity-0 group-hover:opacity-5 transition-all duration-500"></div>
-            <div className="relative space-y-4 md:space-y-6">
-              <div className="terminal-text text-xs md:text-sm opacity-75">> BOB_SUPREMACY.md</div>
-              <h3 className="text-xl md:text-2xl font-bold text-white">
-                The Path to BOB Supremacy
-              </h3>
-              <p className="text-base md:text-lg leading-relaxed text-text-secondary">
-                Our goal isn't just to own BOB - it's to own more BOB than anyone else. 
-                When the history books are written, MegaSynergy will be remembered as the company that saw it first.
-              </p>
-              <div className="h-px w-0 group-hover:w-full bg-white transition-all duration-500 mx-auto md:mx-0"></div>
+            <div className="grid grid-cols-3 gap-4 text-center">
+              <div className="space-y-2">
+                <div className="w-12 h-12 mx-auto bg-white/5 rounded-lg flex items-center justify-center">
+                  <span className="text-2xl">💎</span>
+                </div>
+                <p className="text-sm mono gradient-text">Buy BOB</p>
+              </div>
+              <div className="space-y-2">
+                <div className="w-12 h-12 mx-auto bg-white/5 rounded-lg flex items-center justify-center">
+                  <span className="text-2xl">🔒</span>
+                </div>
+                <p className="text-sm mono gradient-text">HODL BOB</p>
+              </div>
+              <div className="space-y-2">
+                <div className="w-12 h-12 mx-auto bg-white/5 rounded-lg flex items-center justify-center">
+                  <span className="text-2xl">🚀</span>
+                </div>
+                <p className="text-sm mono gradient-text">More BOB</p>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Terminal Effect Footer */}
-        <div className="mt-16 md:mt-24 text-center">
-          <div className="inline-block">
-            <div className="terminal-text text-xs md:text-sm mb-4 opacity-75">
-              > calculate_time_to_bob_dominance.exe
+        {/* Feature Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* BOB Reserve Card */}
+          <div className="group relative">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-white/10 to-white/5 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-500 blur"></div>
+            <div className="relative bg-black/50 backdrop-blur-sm border border-white/10 rounded-lg p-6">
+              <div className="flex flex-col h-full">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="terminal-text text-sm text-white/75">RESERVE.md</div>
+                  <div className="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center">
+                    <span className="text-xl">💰</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">BOB Reserve</h3>
+                <div className="flex-grow">
+                  <p className="text-sm text-white/75 mb-4">Every asset we own is a future BOB.</p>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <div className="w-1 h-1 bg-green-400 rounded-full"></div>
+                      <span className="text-xs text-white/50">Asset conversion: Active</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-1 h-1 bg-green-400 rounded-full"></div>
+                      <span className="text-xs text-white/50">BOB accumulation: In Progress</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-4 h-1 w-0 group-hover:w-full bg-gradient-to-r from-white/20 to-transparent transition-all duration-500"></div>
+              </div>
             </div>
-            <p className="text-base md:text-lg mono text-text-secondary">
-              Estimated time until MegaSynergy becomes the world's largest BOB holder: 
-              <span className="text-white ml-2">Loading...</span>
-            </p>
+          </div>
+
+          {/* Treasury Card */}
+          <div className="group relative">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-white/10 to-white/5 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-500 blur"></div>
+            <div className="relative bg-black/50 backdrop-blur-sm border border-white/10 rounded-lg p-6">
+              <div className="flex flex-col h-full">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="terminal-text text-sm text-white/75">TREASURY.md</div>
+                  <div className="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center">
+                    <span className="text-xl">🏦</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Treasury Revolution</h3>
+                <div className="flex-grow">
+                  <p className="text-sm text-white/75 mb-4">BOB is the perfect treasury asset.</p>
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between text-xs text-white/50">
+                      <span>Cash</span>
+                      <span className="text-red-400">Loses Value ↓</span>
+                    </div>
+                    <div className="flex items-center justify-between text-xs text-white/50">
+                      <span>Bonds</span>
+                      <span className="text-red-400">Zero Yield ↓</span>
+                    </div>
+                    <div className="flex items-center justify-between text-xs text-white/50">
+                      <span>BOB</span>
+                      <span className="text-green-400">Moon Soon ↑</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-4 h-1 w-0 group-hover:w-full bg-gradient-to-r from-white/20 to-transparent transition-all duration-500"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Supremacy Card */}
+          <div className="group relative">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-white/10 to-white/5 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-500 blur"></div>
+            <div className="relative bg-black/50 backdrop-blur-sm border border-white/10 rounded-lg p-6">
+              <div className="flex flex-col h-full">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="terminal-text text-sm text-white/75">SUPREMACY.md</div>
+                  <div className="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center">
+                    <span className="text-xl">👑</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">BOB Supremacy</h3>
+                <div className="flex-grow">
+                  <p className="text-sm text-white/75 mb-4">Own more BOB than anyone else.</p>
+                  <div className="relative h-20">
+                    <div className="absolute bottom-0 left-0 w-full h-16 flex items-end justify-around">
+                      <div className="w-4 h-8 bg-white/10 rounded-t"></div>
+                      <div className="w-4 h-12 bg-white/10 rounded-t"></div>
+                      <div className="w-4 h-16 bg-gradient-to-t from-green-500/50 to-blue-500/50 rounded-t"></div>
+                    </div>
+                    <div className="absolute bottom-0 left-0 w-full flex items-center justify-around">
+                      <span className="text-[10px] text-white/50">Others</span>
+                      <span className="text-[10px] text-white/50">Whales</span>
+                      <span className="text-[10px] text-white/50">MegaSynergy</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-4 h-1 w-0 group-hover:w-full bg-gradient-to-r from-white/20 to-transparent transition-all duration-500"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Progress Indicator */}
+        <div className="mt-12 text-center">
+          <div className="inline-block bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4">
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-xs text-white/75">BOB Accumulation in Progress</span>
+              </div>
+              <div className="h-4 w-32 bg-white/5 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-green-500/50 to-blue-500/50"
+                  style={{ width: '45%', transition: 'width 1s ease-in-out' }}
+                ></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
