@@ -5,7 +5,7 @@ import Typewriter from 'typewriter-effect';
 
 const Hero = () => {
   const canvasRef = useRef(null);
-  const [showTerminal, setShowTerminal] = useState(false);
+  const [showTerminal, setShowTerminal] = useState(true);
   const [terminalLines, setTerminalLines] = useState([]);
   const ref = useRef(null);
   const { docX, docY } = useMouse(ref);
@@ -96,29 +96,30 @@ const Hero = () => {
 
   // Terminal animation
   useEffect(() => {
-    if (showTerminal) return; // Prevent multiple runs
-    
-    const timer = setTimeout(() => {
-      setShowTerminal(true);
-      const lines = [
-        'Analyzing market conditions...',
-        'BOB accumulation strategy: ACTIVE',
-        'Current status: ACCUMULATING'
-      ];
-      
-      lines.forEach((line, index) => {
-        setTimeout(() => {
-          setTerminalLines(prev => [...prev, line]);
-        }, index * 800);
-      });
-    }, 1500);
+    if (!showTerminal) return;
 
-    return () => clearTimeout(timer);
+    const lines = [
+      'Initializing BOB accumulation protocol...',
+      'Scanning market for BOB...',
+      'BOB accumulation strategy: ACTIVE'
+    ];
+
+    let currentLine = 0;
+    const interval = setInterval(() => {
+      if (currentLine < lines.length) {
+        setTerminalLines(lines.slice(0, currentLine + 1));
+        currentLine++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, [showTerminal]);
 
   return (
     <div ref={ref} className="relative">
-      <section className="relative min-h-screen flex items-center justify-center bg-black px-8 lg:px-24 pt-24">
+      <section className="relative min-h-screen flex items-center justify-center bg-black px-8 lg:px-24">
         <canvas 
           ref={canvasRef}
           className="absolute inset-0 w-full h-full"
@@ -133,7 +134,7 @@ const Hero = () => {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-block bg-black/90 rounded-lg px-4 py-2 mb-3"
+            className="inline-block bg-black/90 rounded-lg px-4 py-2 mb-2 text-center mx-auto"
           >
             <div className="text-sm mono text-white/75">
               <Typewriter
@@ -152,7 +153,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="text-4xl lg:text-5xl font-bold text-white leading-[1.1] mb-3"
+            className="text-4xl lg:text-5xl font-bold text-white leading-[1.1] mb-2 text-center"
           >
             Building the World's<br />
             Largest BOB Reserve
@@ -163,7 +164,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
-            className="text-xl text-white/75 mb-6"
+            className="text-xl text-white/75 mb-4 text-center"
           >
             While others diversify, we consolidate. While others speculate, we accumulate.
           </motion.p>
@@ -173,14 +174,14 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
-            className="flex flex-wrap gap-4 justify-center mb-8"
+            className="flex flex-wrap gap-4 justify-center mb-6"
           >
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-12 py-4 text-white bg-black/90 backdrop-blur-sm border border-white/10 rounded-lg hover:bg-white/10 transition-all duration-300 text-lg"
             >
-              READ THE MANIFESTO
+              READ THE WHITEPAPER
             </motion.button>
           </motion.div>
 
@@ -193,65 +194,47 @@ const Hero = () => {
             {/* Terminal Window */}
             <div className="bg-black/90 backdrop-blur-sm border border-white/10 rounded-lg overflow-hidden">
               {/* Terminal Header */}
-              <div className="flex items-center gap-2 px-4 py-2 border-b border-white/10">
+              <div className="flex items-center justify-center gap-2 px-4 py-1 border-b border-white/10">
                 <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
                 <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
                 <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                <span className="text-xs text-white/50 ml-2">megasynergy_accumulation.sh</span>
+                <span className="text-xs text-white/50">megasynergy_accumulation.sh</span>
               </div>
               
               {/* Terminal Content */}
-              <div className="p-4 space-y-2">
-                <div className="flex items-start gap-2">
-                  <span className="text-green-400">$</span>
-                  <span className="text-white/75">init_accumulation_protocol</span>
-                </div>
+              <div className="p-2 space-y-1">
                 {terminalLines.map((line, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className="flex items-start gap-2"
+                    className="flex items-center justify-center gap-2 w-full"
                   >
-                    <span className="text-green-400">></span>
+                    <span className="text-green-400">{index === 0 ? '$' : '>'}</span>
                     <span className="text-white/75">{line}</span>
                   </motion.div>
                 ))}
-                <motion.div 
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ delay: 2.5, duration: 1 }}
-                  className="h-2 w-full bg-black rounded overflow-hidden mt-4"
-                >
+                <div className="flex justify-center gap-4 mt-2">
                   <motion.div 
-                    animate={{ 
-                      width: ["0%", "45%"],
-                      transition: { duration: 2, ease: "easeOut" }
-                    }}
-                    className="h-full bg-gradient-to-r from-green-500/50 to-blue-500/50"
-                  />
-                </motion.div>
+                    animate={{ rotate: [2, -2, 2] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                    className="bg-black/90 backdrop-blur-sm border border-white/10 rounded-lg p-4 text-center"
+                  >
+                    <div className="text-xs text-white/75">BOB_RESERVE.status</div>
+                    <div className="text-xl font-bold text-white">Accumulating</div>
+                  </motion.div>
+
+                  <motion.div 
+                    animate={{ rotate: [-2, 2, -2] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                    className="bg-black/90 backdrop-blur-sm border border-white/10 rounded-lg p-4 text-center"
+                  >
+                    <div className="text-xs text-white/75">TARGET_STATUS</div>
+                    <div className="text-xl font-bold text-white">21M BOB</div>
+                  </motion.div>
+                </div>
               </div>
             </div>
-
-            {/* Status Cards */}
-            <motion.div 
-              animate={{ rotate: [2, -2, 2] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="absolute -top-4 right-4 bg-black/90 backdrop-blur-sm border border-white/10 rounded-lg p-4"
-            >
-              <div className="text-xs text-white/75">BOB_RESERVE.status</div>
-              <div className="text-xl font-bold text-white">Accumulating</div>
-            </motion.div>
-
-            <motion.div 
-              animate={{ rotate: [-2, 2, -2] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="absolute -bottom-4 left-4 bg-black/90 backdrop-blur-sm border border-white/10 rounded-lg p-4"
-            >
-              <div className="text-xs text-white/75">TARGET_STATUS</div>
-              <div className="text-xl font-bold text-white">21M BOB</div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
